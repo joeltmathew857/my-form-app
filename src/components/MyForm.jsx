@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { FiMail, FiPhone, FiUser } from "react-icons/fi";
-import SubmissionPage from "./SubmissionPage"; // Import the SubmissionPage component
+import React, { useState } from 'react';
+import { FiMail, FiPhone, FiUser } from 'react-icons/fi';
+import SubmissionPage from './SubmissionPage'; 
 
 const MyForm = () => {
   // Initial state for form data
-  const initialState = { name: "", email: "", phone: "" };
+  const initialState = { name: '', email: '', phone: '' };
   // State to store form data
   const [formData, setFormData] = useState(initialState);
   // State to track if the form has been submitted successfully
@@ -20,12 +20,12 @@ const MyForm = () => {
     e.preventDefault();
     // Perform form validation
     if (!formData.name || !formData.email || !formData.phone) {
-      alert("Please enter your name, email, and phone number.");
+      alert('Please enter your name, email, and phone number.');
       return;
     }
 
     // Submit the form data to the server or perform any other action
-    console.log("Form data submitted:", formData);
+    console.log('Form data submitted:', formData);
 
     // Reset the form and show the success message
     setFormData(initialState);
@@ -57,7 +57,7 @@ const MyForm = () => {
         <SubmissionPage isSuccessful={true} />
       ) : (
         <form
-          className={`p-4 border rounded ${isMouseOver ? "bg-blue-100" : ""}`}
+          className={`p-4 border rounded ${isMouseOver ? 'bg-blue-100' : ''}`}
           onSubmit={handleSubmit}
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
@@ -101,10 +101,7 @@ const MyForm = () => {
               className="border p-2 w-full"
             />
           </div>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-          >
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
             Submit
           </button>
           {isSubmitted && (
