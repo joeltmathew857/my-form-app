@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { FiMail,FiPhone,FiUser } from 'react-icons/fi';
 
 const MyForm = () => {
   // Initial state for form data
-  const initialState = { name: '', email: '' };
+  const initialState = { name: '', email: '', phone: '' };
   // State to store form data
   const [formData, setFormData] = useState(initialState);
   // State to track if the form has been submitted successfully
@@ -17,8 +18,8 @@ const MyForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form validation
-    if (!formData.name || !formData.email) {
-      alert('Please enter your name and email.');
+    if (!formData.name || !formData.email || !formData.phone) {
+      alert('Please enter your name, email, and phone number.');
       return;
     }
 
@@ -59,7 +60,8 @@ const MyForm = () => {
         onMouseOut={handleMouseOut}
       >
         <div className="mb-4">
-          <label className="block font-semibold">Name:</label>
+          <label className="block font-semibold">
+          <FiUser mr-2 inline/>Name:</label>
           <input
             type="text"
             id="name"
@@ -70,7 +72,21 @@ const MyForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block font-semibold">Email:</label>
+          <label className="block font-semibold">
+            <FiPhone className="mr-2 inline" /> Phone No:
+          </label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="border p-2 w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block font-semibold">
+          <FiMail className="mr-2 inline" />Email:</label>
           <input
             type="email"
             id="email"
@@ -81,7 +97,7 @@ const MyForm = () => {
           />
         </div>
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-          Submit
+           Submit
         </button>
         {/* Show the success message when the form is submitted */}
         {isSubmitted && (
